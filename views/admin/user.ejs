@@ -1,0 +1,114 @@
+<%- include('../partials/header'); %>
+
+<!-- page content -->
+<div class="right_col" role="main">
+  <div class="">
+    <div class="page-title">
+      <div class="title_left">
+        <h3>管理者詳細</h3>
+      </div>
+
+      <div class="title_right">
+        <div class="col-md-5 col-sm-5   form-group pull-right top_search">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for...">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button">Go!</button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    
+  <div class="row">
+    <div class="col-md-12 col-sm-12 ">
+      <div class="x_panel">
+        <div class="x_title">
+          <h2>ユーザID</h2>
+          <ul class="nav navbar-right panel_toolbox">
+            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+            </li>
+          </ul>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+          <br />
+          <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left form-label-left" action="/admin/user" method="post">
+            <div class="item form-group">
+              <label class="col-form-label col-md-3 col-sm-3 label-align" for="user_id">ユーザID
+              </label>
+              <div class="col-md-6 col-sm-6 ">
+                <input type="text" id="user_id" name="user_id" class="form-control" value="<%= adminUser?.user_id %>" <%= (adminUser?.user_id)  ? 'readonly' : ''%>>
+              </div>
+            </div>
+            <div class="item form-group">
+              <label class="control-label col-md-3 col-sm-3 label-align">状態</label>
+              <div class="col-md-6 col-sm-6">
+                <select class="form-control" name="status">
+                  <option value="1" <%= (adminUser?.status == 1) ? 'selected' : '' %>>登録</option>
+                  <option value="2" <%= (adminUser?.status == 2) ? 'selected' : '' %>>利用禁止</option>
+                  <option value="3" <%= (adminUser?.status == 3) ? 'selected' : '' %>>退会</option>
+                </select>
+              </div>
+            </div>
+            <div class="item form-group">
+              <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">氏名 <span class="required">*</span>
+              </label>
+              <div class="col-md-6 col-sm-6 ">
+                <input type="text" id="first-name" name="name" required="required" class="form-control " value="<%= adminUser?.name %>">
+              </div>
+            </div>
+            <div class="item form-group">
+              <label class="col-form-label col-md-3 col-sm-3 label-align" for="name_kana">氏名カナ <span class="required">*</span>
+              </label>
+              <div class="col-md-6 col-sm-6 ">
+                <input type="text" id="name_kana" name="name_kana" required="required" class="form-control " value="<%= adminUser?.name_kana %>">
+              </div>
+            </div>
+            <div class="item form-group">
+              <label for="email	" class="col-form-label col-md-3 col-sm-3 label-align">メールアドレス</label>
+              <div class="col-md-6 col-sm-6 ">
+                <input id="email	" class="form-control" type="text" name="email" value="<%= adminUser?.email %>">
+              </div>
+            </div>
+          <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 label-align">性別</label>
+            <div class="col-md-6 col-sm-6">
+              <select class="form-control" name="gender">
+                <option value="1" <%= (adminUser?.gender == 1) ? 'selected' : '' %>>男性</option>
+                <option value="2" <%= (adminUser?.gender == 2) ? 'selected' : '' %>>女性</option>
+                <option value="3" <%= (adminUser?.gender == 3) ? 'selected' : '' %>>不明</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="item form-group">
+              <label class="control-label col-md-3 col-sm-3 label-align">権限種別</label>
+              <div class="col-md-6 col-sm-6">
+                <select class="form-control" name="auth_type">
+                  <option value="1" <%= (adminUser?.auth_type == 1) ? 'selected' : '' %>>システム</option>
+                  <option value="2" <%= (adminUser?.auth_type == 2) ? 'selected' : '' %>>管理者</option>
+                  <option value="3" <%= (adminUser?.auth_type == 3) ? 'selected' : '' %>>運用</option>
+                </select>
+              </div>
+            </div>
+            <div class="ln_solid"></div>
+            <div class="item form-group">
+              <div class="col-md-6 col-sm-6 offset-md-3">
+                <button class="btn btn-primary" type="reset">キャンセル</button>
+                <button type="submit" class="btn btn-success">更新</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+<!-- /page content -->
+
+<%- include('../partials/footer'); %>

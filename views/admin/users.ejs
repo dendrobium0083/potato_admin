@@ -1,0 +1,79 @@
+<%- include('../partials/header'); %>
+
+<!-- page content -->
+<div class="right_col" role="main">
+  <div class="">
+    <div class="page-title">
+      <div class="title_left">
+        <h3>管理者一覧</h3>
+      </div>
+
+      <div class="title_right">
+        <div class="col-md-5 col-sm-5   form-group pull-right top_search">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for...">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button">Go!</button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="row">
+      <div class="col-md-12 col-sm-12  ">
+        <div class="x_panel">
+          <div class="x_title">
+            <h2>検索結果</h2>
+            <ul class="nav navbar-right panel_toolbox">
+              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Settings 1</a>
+                    <a class="dropdown-item" href="#">Settings 2</a>
+                  </div>
+              </li>
+              <li><a class="close-link"><i class="fa fa-close"></i></a>
+              </li>
+            </ul>
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>ログインID</th>
+                  <th>氏名</th>
+                  <th>メールアドレス</th>
+                  <th>性別</th>
+                  <th>状態</th>
+                  <th>最終ログイン日時</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% for (let adminUser of adminUsers) { %>
+                <tr>
+                  <th scope="row"><%= adminUser.num %></th>
+                  <td><a href="user/<%=adminUser.user_id%>"><%=adminUser.user_id%></a></td>
+                  <td><%= adminUser.name %></td>
+                  <td><%= adminUser.email %></td>
+                  <td><%= adminUser.gender %></td>
+                  <td><%= adminUser.status %></td>
+                  <td><%= adminUser.last_login_date_disp %></td>
+                </tr>
+                <% } %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /page content -->
+<%- include('../partials/footer'); %>
