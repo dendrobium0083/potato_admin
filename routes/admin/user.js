@@ -10,9 +10,9 @@ router.get('/', function(req, res, next) {
 });
 
 /* GET users listing. */
-router.get('/:userId', function(req, res, next) {
+router.get('/:loginId', function(req, res, next) {
   knex.from("admin_user")
-    .where({user_id: req.params.userId})
+    .where({login_id: req.params.loginId})
     .select("*")
     .then(function (results) {
       res.render('admin/user', {
@@ -23,22 +23,21 @@ router.get('/:userId', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
   const spParam = [
-    0
-    , req.body.user_id
+    req.session.admin_id
+    , req.body.login_id
     , req.body.name
     , req.body.name_kana
     , req.body.email
     , req.body.gender
     , req.body.status
     , req.body.auth_type
-    , 0
   ];
 
 
   // 管理者登録
-  knex.raw('call mainte_admin_user(?,?,?,?,?,?,?,?,?);', spParam)
+  knex.raw('call mainte_admin_user(?,?,?,?,?,?,?,?);', spParam)
     .then(function (result) {
-      res.redirect('/admin/user/' + req.body.user_id);
+      res.redirect('/admin/user/' + req.body.login_id);
     })
     .catch(function (err) {
       console.log(err);

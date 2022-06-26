@@ -37,7 +37,7 @@ app.use((req, res, next) => {
     case '/signin':
       break;
     default:
-      if (req.session.id === undefined) {
+      if (req.session.admin_id === undefined) {
         res.redirect('/');
         return;
       }

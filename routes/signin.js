@@ -11,13 +11,13 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/',  function (req, res, next) {
-  const userId = req.body.userId;
+  const loginId = req.body.loginId;
   const password = req.body.password;
 
   knex.transaction(trx => {
     return knex.raw(
       'call login_admin(?, ?, @p_id, @p_result);',
-      [userId, password]
+      [loginId, password]
     )
     .then(res => knex.select(knex.raw('@p_id, @p_result')));
   })
@@ -25,8 +25,8 @@ router.post('/',  function (req, res, next) {
     console.log(results);
     if (results[0]['@p_result'] == '0') {
       // 認証OK
-      req.session.id = results[0]['@p_id'];
-      req.session.userId = userId;
+      req.session.admin_id = results[0]['@p_id'];
+      req.session.loginId = loginId;
       res.redirect('/home');
     } else {
       // 認証NG

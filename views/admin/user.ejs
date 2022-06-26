@@ -5,7 +5,7 @@
   <div class="">
     <div class="page-title">
       <div class="title_left">
-        <h3>管理者詳細</h3>
+        <h3>管理者 > 管理者詳細</h3>
       </div>
 
       <div class="title_right">
@@ -27,7 +27,7 @@
     <div class="col-md-12 col-sm-12 ">
       <div class="x_panel">
         <div class="x_title">
-          <h2>ユーザID</h2>
+          <h2>管理者詳細</h2>
           <ul class="nav navbar-right panel_toolbox">
             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
             </li>
@@ -38,10 +38,10 @@
           <br />
           <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left form-label-left" action="/admin/user" method="post">
             <div class="item form-group">
-              <label class="col-form-label col-md-3 col-sm-3 label-align" for="user_id">ユーザID
+              <label class="col-form-label col-md-3 col-sm-3 label-align" for="login_id">ログインID
               </label>
               <div class="col-md-6 col-sm-6 ">
-                <input type="text" id="user_id" name="user_id" class="form-control" value="<%= adminUser?.user_id %>" <%= (adminUser?.user_id)  ? 'readonly' : ''%>>
+                <input type="text" id="login_id" name="login_id" class="form-control" value="<%= adminUser?.login_id %>" <%= (adminUser?.login_id)  ? 'readonly' : ''%>>
               </div>
             </div>
             <div class="item form-group">

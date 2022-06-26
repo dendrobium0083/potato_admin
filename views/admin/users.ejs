@@ -59,7 +59,7 @@
                 <% for (let adminUser of adminUsers) { %>
                 <tr>
                   <th scope="row"><%= adminUser.num %></th>
-                  <td><a href="user/<%=adminUser.user_id%>"><%=adminUser.user_id%></a></td>
+                  <td><a href="user/<%=adminUser.login_id%>"><%=adminUser.login_id%></a></td>
                   <td><%= adminUser.name %></td>
                   <td><%= adminUser.email %></td>
                   <td><%= adminUser.gender %></td>
